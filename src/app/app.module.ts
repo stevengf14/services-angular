@@ -1,4 +1,4 @@
-import { RouterModule , Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,17 +12,17 @@ import { InicioComponent } from './inicio/inicio.component';
 import { Error404Component } from './error404/error404.component';
 import { DetallesComponent } from './detalles/detalles.component';
 
-import { LibrosseleccionadosService } from './librosseleccionados.service';
+import { SelectedBooksService } from './selected-books.service';
 import { MiDirectivaDirective } from './mi-directiva.directive';
 
-const rutasApp:Routes = [
-  { path:'lista-libros' , component: ListaDeLibrosComponent },
-  { path:'acerca-de' , component: AcercaDeComponent },
-  { path:'detalles/:libroId' , component: DetallesComponent },
-  { path:'404' , component: Error404Component },
-  { path:'' , redirectTo: 'lista-libros' , pathMatch: 'full' },
-  { path:'**' , redirectTo: '404' }
-]
+const rutasApp: Routes = [
+  { path: 'lista-libros', component: ListaDeLibrosComponent },
+  { path: 'acerca-de', component: AcercaDeComponent },
+  { path: 'detalles/:libroId', component: DetallesComponent },
+  { path: '404', component: Error404Component },
+  { path: '', redirectTo: 'lista-libros', pathMatch: 'full' },
+  { path: '**', redirectTo: '404' },
+];
 
 @NgModule({
   declarations: [
@@ -33,17 +33,15 @@ const rutasApp:Routes = [
     InicioComponent,
     Error404Component,
     DetallesComponent,
-    MiDirectivaDirective
+    MiDirectivaDirective,
   ],
   imports: [
     RouterModule.forRoot(rutasApp),
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [
-    LibrosseleccionadosService
-  ],
-  bootstrap: [AppComponent]
+  providers: [SelectedBooksService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
